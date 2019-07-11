@@ -1,35 +1,36 @@
-﻿@model IEnumerable<LuxyboxIdentity.Data.Product>
-
+﻿
 @{
     ViewBag.Title = "Index";
 }
-<p>
-    
-</p>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@model  LuxyboxIdentity.Models.HomeModel
 
+<h2>Category List</h2>
 @{
-    <div>
-        @foreach (var product in Model)
+    @*<select>
+            @foreach (var category in Model.Categories)
+            {
+                <option value="@category.Name">@category.Name</option>
+            }
+        </select>*@
+
+
+    <div class="categorys">
+
+
+        @foreach (var category in Model.Categories)
         {
-            <div class="products">
-                <div class="product-row">
-                    <a href="@Url.Action("Details", "Products", new { id = product.Id })"> 
 
-                    <img class="product-image" src="@product.ImgUrl" />
-
-                    <p class="product-name">@product.Name</p>
-                    <p class="product-price" @product.Price></p>
-                    @Html.ActionLink("Edit", "Edit", new { id = product.Id }) |
-@Html.ActionLink("Delete", "Delete", new { id = product.Id })
-
-                </div>
+            <div class="category-row">
+                <a href="@Url.Action("Products", "Home", new { id = category.Id })">
+                    <div>
+                        <img class="category-image" src="@category.ImgUrl" />
+                        <p class="category-name">@category.Name</p>
+                    </div>
+                </a>
             </div>
 
         }
     </div>
 }
-
 <div class="clearfix"></div>
+

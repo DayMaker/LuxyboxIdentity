@@ -25,17 +25,29 @@
                 </p>
 
             </td>
-                
 
-            
+
+
 
             <p><em> @Html.DisplayFor(model => model.Info)</em></p>
         </div>
 
-        
+
 
     </dl>
 </div>
 
 <div class="clearfix"></div>
-@Html.ActionLink("AddToBuy", "AddToBuy");
+@*@Html.ActionLink("AddToBuy", "AddToBuy");
+@{
+    @foreach (var product in Model)
+    {
+        @Html.ActionLink("BackToList", "Products", new { id = product.Id });
+    }
+}*@
+
+
+
+
+
+

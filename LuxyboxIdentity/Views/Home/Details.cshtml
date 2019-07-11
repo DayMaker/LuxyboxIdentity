@@ -13,28 +13,21 @@
 <div>
     <h4>Details</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <div class="dl-horizontal">
         <div>
-            <td>
-                <p>
-                    <img class="detail-image" src="@Model.ImgUrl" />
-                <p>  <big> @Html.DisplayFor(model => model.Name) </big> </p>
-                <p> <b>  @Html.DisplayFor(model => model.Price)  </b> </p>
-                <p> <strong> @Html.DisplayFor(model => model.Author) </strong> </p>
-                <p> <strong> @Html.DisplayFor(model => model.Publisher) </strong> </p>
-                </p>
-
-            </td>
-
-
-
+            <p> <img class="detail-image" src="@Model.ImgUrl" /></p>
+            <p>  <big> @Html.DisplayFor(model => model.Name) </big> </p>
+            <p> <b>  @Html.DisplayFor(model => model.Price)  </b> </p>
+            <p> <strong> @Html.DisplayFor(model => model.Author) </strong> </p>
+            <p> <strong> @Html.DisplayFor(model => model.Publisher) </strong> </p>
+               
 
             <p><em> @Html.DisplayFor(model => model.Info)</em></p>
         </div>
 
 
 
-    </dl>
+    </div>
 </div>
 
 <div class="clearfix"></div>

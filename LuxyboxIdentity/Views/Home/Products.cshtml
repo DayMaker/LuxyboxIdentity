@@ -1,0 +1,31 @@
+﻿@model List<LuxyboxIdentity.Data.Product>
+
+@{ ViewBag.Title = "Kitaplar";}
+
+<p>
+</p>
+
+
+
+@{
+    <div>
+        @foreach (var product in Model)
+        {
+            <div class="products">
+                <div class="product-row">
+                    <a href="@Url.Action("Details", "Home", new { id = product.Id })">
+
+                        <img class="product-image" src="@product.ImgUrl" />
+
+                        <p class="product-name">@product.Name</p>
+                        <p class="product-price" @product.Price></p>
+
+
+</div>
+            </div>
+
+        }
+    </div>
+}
+
+<div class="clearfix"></div>

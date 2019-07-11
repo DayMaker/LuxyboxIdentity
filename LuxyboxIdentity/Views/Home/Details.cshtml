@@ -1,0 +1,41 @@
+﻿
+@model LuxyboxIdentity.Data.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+<p>
+
+</p>
+
+
+
+<div>
+    <h4>Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <div>
+            <td>
+                <p>
+                    <img class="detail-image" src="@Model.ImgUrl" />
+                <p>  <big> @Html.DisplayFor(model => model.Name) </big> </p>
+                <p> <b>  @Html.DisplayFor(model => model.Price)  </b> </p>
+                <p> <strong> @Html.DisplayFor(model => model.Author) </strong> </p>
+                <p> <strong> @Html.DisplayFor(model => model.Publisher) </strong> </p>
+                </p>
+
+            </td>
+                
+
+            
+
+            <p><em> @Html.DisplayFor(model => model.Info)</em></p>
+        </div>
+
+        
+
+    </dl>
+</div>
+
+<div class="clearfix"></div>
+@Html.ActionLink("Sepete Ekle", "Buy");

@@ -3,17 +3,57 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using LuxyboxIdentity.Models;
+using LuxyboxIdentity.Data;
+using System.Net;
+
 
 namespace LuxyboxIdentity.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
+        
+
         public ActionResult Index()
         {
-            return View();
-        }
 
-        public ActionResult About()
+            //Helper.BusinessHelper.AddCategory(new Data.Category { Name = "Men" });
+            var categories = dbContext.Categories.ToList();//Helper.BusinessHelper.GetCategories();
+            var products = dbContext.Products.ToList();
+            var model = new HomeModel(categories, products);
+
+            return View(model);
+        }
+        public ActionResult Products(int id)
+        {
+            if (id == 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var products = dbContext.Products.Where(c => c.CategoryId == id).ToList();
+            if (products == null)
+            {
+                return HttpNotFound();
+            }
+            return View(products);
+        }
+        public ActionResult Details(int id)
+        {
+            if (id == 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = dbContext.Products.SingleOrDefault(q => q.Id == id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+    
+
+
+    public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 

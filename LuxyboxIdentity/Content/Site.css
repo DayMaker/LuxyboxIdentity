@@ -9,16 +9,66 @@
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
-}
-
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 280px;
+}
+
+
+.product {
+    background-color: yellow;
+}
+
+.product-row {
+    padding: 10px;
+    margin-left: 10px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    color: deeppink;
+    float: left;
+}
+
+.product-image {
+    width: 200px;
+    height: 150px;
+}
+
+.categorys {
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-row {
+    padding: 10px;
+    margin-left: 10px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    color: deeppink;
+    float: left;
+}
+
+.category-image {
+    width: 200px;
+    height: 150px;
+}
+
+.navbar-brand {
+    color: purple !important;
+}
+
+.lux-box {
+    height: 60px;
+    width: 100px;
+}
+
+.detail-image {
+    width: 400px;
+    height: 500px;
 }

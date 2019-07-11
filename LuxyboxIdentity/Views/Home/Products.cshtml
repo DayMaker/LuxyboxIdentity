@@ -3,10 +3,20 @@
 @{ ViewBag.Title = "Kitaplar";}
 
 <p>
-</p>
 
-
-
+@Html.ActionLink("Bilim-Kurgu", "/Products/3");
+@Html.ActionLink("Roman", "/Products/4");
+@Html.ActionLink("Deneme", "/Products/5");
+@Html.ActionLink("Öykü", "/Products/6");
+@Html.ActionLink("Fantastik", "/Products/7");
+@Html.ActionLink("Biyografi", "/Products/8");
+@Html.ActionLink("Kişisel Gelişim", "/Products/9");
+@Html.ActionLink("Eleştiri", "/Products/10");
+@Html.ActionLink("Rus Edebiyatı", "/Products/11");
+@Html.ActionLink("Çocuk Kitapları", "/Products/13");
+@Html.ActionLink("Felsefe Kitapları", "/Products/14");
+@Html.ActionLink("Sağlık Kitapları", "/Products/15");
+ </p>
 @{
     <div>
         @foreach (var product in Model)
@@ -21,7 +31,7 @@
                         <p class="product-price" @product.Price></p>
 
 
-</div>
+                </div>
             </div>
 
         }

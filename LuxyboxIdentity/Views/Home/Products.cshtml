@@ -1,25 +1,25 @@
-﻿@model List<LuxyboxIdentity.Data.Product>
+﻿@using LuxyboxIdentity.Models;
+
+@model HomeModel
+
 
 @{ ViewBag.Title = "Kitaplar";}
+@{ 
+    foreach (var category in Model.Categories)
+    {
+    <ul>
+        <li>
+            <a href="@Url.Action("Products", "Home", new { id = category.Id})">@category.Name</a>
+        </li>
+    </ul>
+    
 
-<p>
+    }
+}
 
-@Html.ActionLink("Bilim-Kurgu", "/Products/3");
-@Html.ActionLink("Roman", "/Products/4");
-@Html.ActionLink("Deneme", "/Products/5");
-@Html.ActionLink("Öykü", "/Products/6");
-@Html.ActionLink("Fantastik", "/Products/7");
-@Html.ActionLink("Biyografi", "/Products/8");
-@Html.ActionLink("Kişisel Gelişim", "/Products/9");
-@Html.ActionLink("Eleştiri", "/Products/10");
-@Html.ActionLink("Rus Edebiyatı", "/Products/11");
-@Html.ActionLink("Çocuk Kitapları", "/Products/13");
-@Html.ActionLink("Felsefe Kitapları", "/Products/14");
-@Html.ActionLink("Sağlık Kitapları", "/Products/15");
- </p>
 @{
     <div>
-        @foreach (var product in Model)
+        @foreach (var product in Model.Products)
         {
             <div class="products">
                 <div class="product-row">
@@ -29,7 +29,7 @@
 
                         <p class="product-name">@product.Name</p>
                         <p class="product-price" @product.Price></p>
-
+                    </a>
 
                 </div>
             </div>

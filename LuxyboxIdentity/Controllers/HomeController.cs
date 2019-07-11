@@ -26,6 +26,7 @@ namespace LuxyboxIdentity.Controllers
         }
         public ActionResult Products(int id)
         {
+
             if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -35,7 +36,11 @@ namespace LuxyboxIdentity.Controllers
             {
                 return HttpNotFound();
             }
-            return View(products);
+
+            var categories = dbContext.Categories.ToList();
+            var model = new HomeModel(categories, products);
+
+            return View(model);
         }
         public ActionResult Details(int id)
         {

@@ -25,17 +25,18 @@
                 </p>
 
             </td>
-                
 
-            
+
+
 
             <p><em> @Html.DisplayFor(model => model.Info)</em></p>
         </div>
 
-        
+
 
     </dl>
 </div>
 
 <div class="clearfix"></div>
 @Html.ActionLink("AddToBuy", "AddToBuy");
+@Model.Category.Name > @Model.Name

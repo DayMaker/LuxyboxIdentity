@@ -9,10 +9,10 @@ namespace LuxyboxIdentity.Controllers
 {
     public class BaseController : Controller
     {
-        protected Data.STAJER2019Entities dbContext = null;
+        protected Data.Entities dbContext = null;
         protected override void Initialize(RequestContext requestContext)
         {
-            dbContext = new Data.STAJER2019Entities();
+            dbContext = new Data.Entities();
             base.Initialize(requestContext);
         }
         protected override void Dispose(bool disposing)

@@ -21,7 +21,6 @@ namespace LuxyboxIdentity.Controllers
             var categories = dbContext.Categories.ToList();//Helper.BusinessHelper.GetCategories();
             var products = dbContext.Products.ToList();
             var model = new HomeModel(categories, products);
-
             return View(model);
         }
         public ActionResult Products(int id)

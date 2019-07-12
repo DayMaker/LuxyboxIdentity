@@ -4,9 +4,6 @@
 @{
     ViewBag.Title = "Details";
 }
-<p>
-
-</p>
 
 
 
@@ -15,16 +12,15 @@
     <hr />
     <dl class="dl-horizontal">
         <div>
-            <td>
-                <p>
-                    <img class="detail-image" src="@Model.ImgUrl" />
+         
+                 <p> <img class="detail-image" src="@Model.ImgUrl" /> </p> 
                 <p>  <big> @Html.DisplayFor(model => model.Name) </big> </p>
                 <p> <b>  @Html.DisplayFor(model => model.Price)  </b> </p>
                 <p> <strong> @Html.DisplayFor(model => model.Author) </strong> </p>
                 <p> <strong> @Html.DisplayFor(model => model.Publisher) </strong> </p>
-                </p>
+               
 
-            </td>
+        
 
 
 

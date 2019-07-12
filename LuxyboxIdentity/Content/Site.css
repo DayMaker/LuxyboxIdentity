@@ -69,11 +69,6 @@ textarea {
     width: 100px;
 }
 
-.detail-image {
-    width: 400px;
-    height: 500px;
-}
-
 .left-categorys {
     float:left;
     width: 200px;
@@ -84,3 +79,48 @@ textarea {
     /* Change this to whatever the width of your left column is*/
 }
 
+
+
+
+
+
+
+.detail-left-column{
+    float:left;
+}
+
+    .detail-left-column img {
+        width: 160px;
+    }
+
+    .detail-left-column .names {
+        font-size: 26px;
+    }
+
+    .detail-left-column .author {
+        border: 1px solid gray;
+        padding: 15px 20px;
+        margin-bottom: 15px;
+        width: 210px;
+    }
+
+    .detail-left-column .publisher {
+        border: 1px solid gray;
+        padding: 15px 20px;
+        margin-bottom: 15px;
+        width: 210px;
+    }
+
+
+
+
+.detail-right-column {
+    width: 100%;
+    margin-left: 180px;
+}
+
+
+.detail-info {
+  clear:both;
+  margin-top:15px;
+}

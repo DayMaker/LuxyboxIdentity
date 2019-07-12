@@ -7,6 +7,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 30px;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -71,5 +72,15 @@ textarea {
 .detail-image {
     width: 400px;
     height: 500px;
+}
+
+.left-categorys {
+    float:left;
+    width: 200px;
+}
+
+.right-products {
+    margin-left: 200px;
+    /* Change this to whatever the width of your left column is*/
 }
 

@@ -17,7 +17,7 @@ namespace LuxyboxIdentity.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Order()
         {
-            this.OrderItem = new HashSet<OrderItem>();
+            this.OrderItems = new HashSet<OrderItem>();
         }
     
         public int Id { get; set; }
@@ -26,6 +26,6 @@ namespace LuxyboxIdentity.Data
     
         public virtual Member Member { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderItem> OrderItem { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

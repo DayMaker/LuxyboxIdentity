@@ -12,11 +12,14 @@ namespace LuxyboxIdentity.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class C__MigrationHistory
+    public partial class CartItem
     {
-        public string MigrationId { get; set; }
-        public string ContextKey { get; set; }
-        public byte[] Model { get; set; }
-        public string ProductVersion { get; set; }
+        public int Id { get; set; }
+        public int CartId { get; set; }
+        public int ProductId { get; set; }
+        public System.DateTime CreateDate { get; set; }
+    
+        public virtual Cart Cart { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

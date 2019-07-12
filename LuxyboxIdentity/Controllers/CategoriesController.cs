@@ -13,7 +13,7 @@ namespace LuxyboxIdentity.Controllers
     
     public class CategoriesController : Controller
     {
-        private STAJER2019Entities db = new STAJER2019Entities();
+        private Entities db = new Entities();
 
         // GET: Categories
         public ActionResult Index()
@@ -115,6 +115,7 @@ namespace LuxyboxIdentity.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         protected override void Dispose(bool disposing)
         {

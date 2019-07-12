@@ -7,9 +7,6 @@
 <p>
 
 </p>
-
-
-
 <div>
     <h4>Details</h4>
     <hr />
@@ -24,12 +21,10 @@
 
             <p><em> @Html.DisplayFor(model => model.Info)</em></p>
         </div>
-
-
-
     </div>
 </div>
 
 <div class="clearfix"></div>
-@Html.ActionLink("AddToBuy", "AddToBuy");
+
+@Html.ActionLink("Add To Cart", "AddToCart");
 @Model.Category.Name > @Model.Name

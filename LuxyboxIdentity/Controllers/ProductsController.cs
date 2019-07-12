@@ -13,7 +13,7 @@ namespace LuxyboxIdentity.Controllers
 {
     public class ProductsController : Controller
     {
-        private STAJER2019Entities db = new STAJER2019Entities();
+        private Entities db = new Entities();
 
         // GET: Products
 

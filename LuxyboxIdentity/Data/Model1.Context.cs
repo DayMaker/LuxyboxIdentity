@@ -13,10 +13,10 @@ namespace LuxyboxIdentity.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class STAJER2019Entities : DbContext
+    public partial class Entities : DbContext
     {
-        public STAJER2019Entities()
-            : base("name=STAJER2019Entities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -24,16 +24,13 @@ namespace LuxyboxIdentity.Data
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
+        public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<CartItem> CartItems { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Member> Members { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderItem> OrderItems { get; set; }
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
-        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     }
 }

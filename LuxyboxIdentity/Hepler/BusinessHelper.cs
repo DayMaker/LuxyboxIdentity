@@ -9,7 +9,7 @@ namespace LuxyboxIdentity.Helper
     {
         public static void AddCategory(Category category)
         {
-            using (var db = new STAJER2019Entities())
+            using (var db = new Entities())
             {
                 db.Categories.Add(category);
                 db.SaveChanges();
@@ -17,7 +17,7 @@ namespace LuxyboxIdentity.Helper
         }
         public static List<Category> GetCategories()
         {
-            using (var db = new STAJER2019Entities())
+            using (var db = new Entities())
             {
                 var cateogries = db.Categories.ToList();
                 return cateogries;

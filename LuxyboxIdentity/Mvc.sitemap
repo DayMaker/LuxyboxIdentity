@@ -4,8 +4,16 @@
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
 
   <mvcSiteMapNode title="Home" controller="Home" action="Index">
-  <mvcSiteMapNode title="Products" controller="Home" action="Products" preservedRouteParameters="id"/>
-  <mvcSiteMapNode title="Details" controller="Home" action="Details" preservedRouteParameters="id"/>
+    
+  <mvcSiteMapNode title="Products" controller="Home" action="Products" preservedRouteParameters="id">
+    
+  
+  <mvcSiteMapNode title="Details" controller="Home" action="Details" preservedRouteParameters="CategoryId,ProductsId,id">
+        
   </mvcSiteMapNode>
+  </mvcSiteMapNode>
+            
+  </mvcSiteMapNode>
+  
 
 </mvcSiteMap>

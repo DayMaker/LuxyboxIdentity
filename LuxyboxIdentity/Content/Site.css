@@ -34,8 +34,8 @@ textarea {
 }
 
 .product-image {
-    width: 200px;
-    height: 150px;
+    width: 150px;
+    height: 180px;
 }
 
 .categorys {
@@ -123,4 +123,16 @@ textarea {
 .detail-info {
   clear:both;
   margin-top:15px;
+}
+.btntext-center {
+    
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    width: 210px;
+    float:left;
+}
+.basket {
+   width:45px;
+    
+   
 }

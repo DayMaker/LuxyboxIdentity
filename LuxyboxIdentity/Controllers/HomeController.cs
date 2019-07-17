@@ -54,10 +54,16 @@ namespace LuxyboxIdentity.Controllers
             }
             return View(product);
         }
-    
+        public ActionResult AddToCart()
+        {
+            ViewBag.Message = "Ürün Sepete Eklendi";
+
+            return View();
+        }
 
 
-    public ActionResult About()
+
+        public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 

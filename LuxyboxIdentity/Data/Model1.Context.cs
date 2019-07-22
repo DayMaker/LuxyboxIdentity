@@ -25,12 +25,11 @@ namespace LuxyboxIdentity.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Cart> Carts { get; set; }
-        public virtual DbSet<CartItem> CartItems { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Member> Members { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderItem> OrderItems { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<CartItem> CartItems { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
     }
 }

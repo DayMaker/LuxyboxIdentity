@@ -15,6 +15,15 @@ namespace LuxyboxIdentity.Controllers
             dbContext = new Data.Entities();
             base.Initialize(requestContext);
         }
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            if (Session["sessionId"] == null)
+            {
+                Session["sessionId"] = Guid.NewGuid();
+            }
+            base.OnActionExecuting(filterContext);
+        }
+
         protected override void Dispose(bool disposing)
         {
             dbContext.Dispose();

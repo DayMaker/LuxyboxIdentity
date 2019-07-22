@@ -21,10 +21,9 @@ namespace LuxyboxIdentity.Data
         }
     
         public int Id { get; set; }
-        public int MemberId { get; set; }
+        public string MemberId { get; set; }
         public System.DateTime CreateDate { get; set; }
     
-        public virtual Member Member { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderItem> OrderItems { get; set; }
     }

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using LuxyboxIdentity.Models;
 using LuxyboxIdentity.Data;
 using System.Net;
-
+using Microsoft.AspNet.Identity;
 
 namespace LuxyboxIdentity.Controllers
 {
@@ -54,10 +54,20 @@ namespace LuxyboxIdentity.Controllers
             }
             return View(product);
         }
-        public ActionResult AddToCart()
+        public ActionResult AddToCart(int id)
         {
             ViewBag.Message = "Ürün Sepete Eklendi";
-
+            Cart cart = new Cart { CreateDate = DateTime.Now, SessionId = Session["sessionId"].ToString() };
+            
+            if(HttpContext.User.Identity.IsAuthenticated)
+            {
+                cart.MemberId = User.Identity.GetUserId();
+            }
+            dbContext.Carts.Add(cart);
+            dbContext.SaveChanges();
+            CartItem item = new CartItem { CartId = cart.Id, CreateDate = DateTime.Now, ProductId = id, Quantity = 1 };
+            cart.CartItems.Add(item);
+            dbContext.SaveChanges();
             return View();
         }
 

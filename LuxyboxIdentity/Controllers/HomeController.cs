@@ -20,7 +20,9 @@ namespace LuxyboxIdentity.Controllers
             //Helper.BusinessHelper.AddCategory(new Data.Category { Name = "Men" });
             var categories = dbContext.Categories.ToList();//Helper.BusinessHelper.GetCategories();
             var products = dbContext.Products.ToList();
-            var model = new HomeModel(categories, products);
+            var cartitems = dbContext.CartItems.ToList();
+            var model = new HomeModel(categories, products,cartitems);
+            
             return View(model);
         }
         public ActionResult Products(int id)
@@ -37,7 +39,8 @@ namespace LuxyboxIdentity.Controllers
             }
 
             var categories = dbContext.Categories.ToList();
-            var model = new HomeModel(categories, products);
+            var cartitems = dbContext.CartItems.ToList();
+            var model = new HomeModel(categories, products,cartitems);
 
             return View(model);
         }
@@ -68,7 +71,17 @@ namespace LuxyboxIdentity.Controllers
             CartItem item = new CartItem { CartId = cart.Id, CreateDate = DateTime.Now, ProductId = id, Quantity = 1 };
             cart.CartItems.Add(item);
             dbContext.SaveChanges();
-            return View();
+            return RedirectToAction("Cart");
+        }
+        public ActionResult Cart()
+        {
+            string sessionId = Session["sessionId"].ToString();
+            Cart cart = dbContext.Carts.SingleOrDefault(q => q.SessionId == sessionId);
+            if (cart == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cart);
         }
 
 

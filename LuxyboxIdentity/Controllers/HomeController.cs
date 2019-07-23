@@ -57,19 +57,26 @@ namespace LuxyboxIdentity.Controllers
             }
             return View(product);
         }
+
         public ActionResult AddToCart(int id)
-        {
+        {            
             ViewBag.Message = "Ürün Sepete Eklendi";
-            Cart cart = new Cart { CreateDate = DateTime.Now, SessionId = Session["sessionId"].ToString() };
-            
-            if(HttpContext.User.Identity.IsAuthenticated)
+            var sessionId = Session["sessionId"].ToString();
+            var currentCart = dbContext.Carts.SingleOrDefault(q=>q.SessionId == sessionId);
+            if(currentCart == null)
             {
-                cart.MemberId = User.Identity.GetUserId();
+                currentCart = new Cart { CreateDate = DateTime.Now, SessionId = Session["sessionId"].ToString() };
+                dbContext.Carts.Add(currentCart);
+                dbContext.SaveChanges();
             }
-            dbContext.Carts.Add(cart);
-            dbContext.SaveChanges();
-            CartItem item = new CartItem { CartId = cart.Id, CreateDate = DateTime.Now, ProductId = id, Quantity = 1 };
-            cart.CartItems.Add(item);
+
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                currentCart.MemberId = User.Identity.GetUserId();
+            }
+
+            CartItem item = new CartItem { CartId = currentCart.Id, CreateDate = DateTime.Now, ProductId = id, Quantity = 1 };
+            currentCart.CartItems.Add(item);
             dbContext.SaveChanges();
             return RedirectToAction("Cart");
         }

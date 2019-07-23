@@ -12,7 +12,7 @@ namespace LuxyboxIdentity.Controllers
 {
     public class HomeController : BaseController
     {
-        
+
 
         public ActionResult Index()
         {
@@ -58,8 +58,8 @@ namespace LuxyboxIdentity.Controllers
         {
             ViewBag.Message = "Ürün Sepete Eklendi";
             Cart cart = new Cart { CreateDate = DateTime.Now, SessionId = Session["sessionId"].ToString() };
-            
-            if(HttpContext.User.Identity.IsAuthenticated)
+
+            if (HttpContext.User.Identity.IsAuthenticated)
             {
                 cart.MemberId = User.Identity.GetUserId();
             }
@@ -83,6 +83,12 @@ namespace LuxyboxIdentity.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult Cart()
+        {
 
             return View();
         }

@@ -20,7 +20,9 @@ namespace LuxyboxIdentity.Controllers
             //Helper.BusinessHelper.AddCategory(new Data.Category { Name = "Men" });
             var categories = dbContext.Categories.ToList();//Helper.BusinessHelper.GetCategories();
             var products = dbContext.Products.ToList();
-            var model = new HomeModel(categories, products);
+            var cartitems = dbContext.CartItems.ToList();
+            var model = new HomeModel(categories, products,cartitems);
+            
             return View(model);
         }
         public ActionResult Products(int id)
@@ -37,7 +39,8 @@ namespace LuxyboxIdentity.Controllers
             }
 
             var categories = dbContext.Categories.ToList();
-            var model = new HomeModel(categories, products);
+            var cartitems = dbContext.CartItems.ToList();
+            var model = new HomeModel(categories, products,cartitems);
 
             return View(model);
         }
@@ -54,21 +57,38 @@ namespace LuxyboxIdentity.Controllers
             }
             return View(product);
         }
+
         public ActionResult AddToCart(int id)
-        {
+        {            
             ViewBag.Message = "Ürün Sepete Eklendi";
-            Cart cart = new Cart { CreateDate = DateTime.Now, SessionId = Session["sessionId"].ToString() };
+            var sessionId = Session["sessionId"].ToString();
+            var currentCart = dbContext.Carts.SingleOrDefault(q=>q.SessionId == sessionId);
+            if(currentCart == null)
+            {
+                currentCart = new Cart { CreateDate = DateTime.Now, SessionId = Session["sessionId"].ToString() };
+                dbContext.Carts.Add(currentCart);
+                dbContext.SaveChanges();
+            }
 
             if (HttpContext.User.Identity.IsAuthenticated)
             {
-                cart.MemberId = User.Identity.GetUserId();
+                currentCart.MemberId = User.Identity.GetUserId();
             }
-            dbContext.Carts.Add(cart);
+
+            CartItem item = new CartItem { CartId = currentCart.Id, CreateDate = DateTime.Now, ProductId = id, Quantity = 1 };
+            currentCart.CartItems.Add(item);
             dbContext.SaveChanges();
-            CartItem item = new CartItem { CartId = cart.Id, CreateDate = DateTime.Now, ProductId = id, Quantity = 1 };
-            cart.CartItems.Add(item);
-            dbContext.SaveChanges();
-            return View();
+            return RedirectToAction("Cart");
+        }
+        public ActionResult Cart()
+        {
+            string sessionId = Session["sessionId"].ToString();
+            Cart cart = dbContext.Carts.SingleOrDefault(q => q.SessionId == sessionId);
+            if (cart == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cart);
         }
 
 

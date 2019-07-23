@@ -109,10 +109,6 @@ namespace LuxyboxIdentity.Controllers
             return View();
         }
 
-        public ActionResult Cart()
-        {
-
-            return View();
-        }
+        
     }
 }

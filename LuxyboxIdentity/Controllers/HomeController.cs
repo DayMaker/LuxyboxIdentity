@@ -12,7 +12,7 @@ namespace LuxyboxIdentity.Controllers
 {
     public class HomeController : BaseController
     {
-        
+
 
         public ActionResult Index()
         {
@@ -105,6 +105,12 @@ namespace LuxyboxIdentity.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult Cart()
+        {
 
             return View();
         }

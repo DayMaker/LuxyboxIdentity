@@ -136,3 +136,50 @@ textarea {
     
    
 }
+.cart-list-header group{
+    border-bottom: 1px solid;
+}
+.col2 {
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    width: 210px;
+    float: right;
+}
+.col1 {
+    
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    width: 210px;
+    float:right;
+   
+}
+
+
+.blg {
+    width: 100px;
+}
+.row {
+    border-top: 2px solid gray;
+}
+.form-control{
+    width:34px;
+   float:right;
+   margin-top:6px
+}
+.col-md-2 {
+    text-align: right;
+    font-family: Arial Rounded MT;
+    font-size: 20px;
+    color: black;
+    margin-top: 20px
+}
+.col-md-6 {
+    font-family: Arial Rounded MT;
+    font-size: 20px;
+    color: black;
+    margin-top: 20px
+}
+.cart-title {
+    color: orangered;
+}
+

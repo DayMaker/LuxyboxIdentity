@@ -1,7 +1,9 @@
-﻿@{
+﻿@using LuxyboxIdentity.Models;
+
+@{
     ViewBag.Title = "Cart";
 }
-
+@model LuxyboxIdentity.Data.Cart
 <div class="container">
     <header class="group">
         <h1 class="cart-title">SEPETİM</h1>
@@ -26,5 +28,9 @@
             <div class="col-md-2"> <input type="text" class="form-control" aria-describedby="basic-addon2"></div>
             <div class="col-md-2">1250tl</div>
         </div>
+        <div>@foreach (var item in Model.CartItems)
+        {
+            <p class="product-name">@item.Product.Name</p>
+        }</div>
         </div>
 </div>

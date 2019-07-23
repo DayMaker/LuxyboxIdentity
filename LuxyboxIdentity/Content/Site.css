@@ -159,7 +159,7 @@ textarea {
     width: 100px;
 }
 .row {
-    border-top: 2px solid gray;
+
 }
 .form-control{
     width:34px;
@@ -180,6 +180,9 @@ textarea {
     margin-top: 20px
 }
 .cart-title {
-    color: orangered;
+    color:mediumvioletred;
 }
 
+.product-item {
+    border-top: 2px solid gray;
+}

@@ -21,6 +21,8 @@ namespace LuxyboxIdentity.Controllers
             {
                 Session["sessionId"] = Guid.NewGuid();
             }
+            string sessionId = Session["sessionId"].ToString();
+            ViewBag.CurrentCart = dbContext.Carts.SingleOrDefault(q=>q.SessionId == sessionId);
             base.OnActionExecuting(filterContext);
         }
 

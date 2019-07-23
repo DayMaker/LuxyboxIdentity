@@ -338,6 +338,7 @@
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
+    <Content Include="Views\Home\AddToCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

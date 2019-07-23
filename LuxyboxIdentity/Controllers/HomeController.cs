@@ -75,7 +75,9 @@ namespace LuxyboxIdentity.Controllers
         }
         public ActionResult Cart()
         {
+            
             string sessionId = Session["sessionId"].ToString();
+            
             Cart cart = dbContext.Carts.SingleOrDefault(q => q.SessionId == sessionId);
             if (cart == null)
             {

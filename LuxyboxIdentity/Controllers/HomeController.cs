@@ -101,6 +101,12 @@ namespace LuxyboxIdentity.Controllers
 
             return View();
         }
+        public ActionResult Shopping()
+        {
+            ViewBag.Message = "Bizi tercih ettiğiniz için teşekkür ederiz.";
+
+            return View();
+        }
 
         public ActionResult Contact()
         {
@@ -122,9 +128,10 @@ namespace LuxyboxIdentity.Controllers
                 checkorder.SessionId = sessionId;
                 checkorder.CreateDate = DateTime.Now;
                 dbContext.CheckOrders.Add(checkorder);
-                //dbContext.Carts.Count == null;
-                //dbContext.Carts.Count
-                return RedirectToAction("Index");
+                var cart = (Cart)ViewBag.CurrentCart;
+                dbContext.Carts.Remove(cart);
+                dbContext.SaveChanges();
+                return RedirectToAction("Shopping");
             }
 
             return View(checkorder);

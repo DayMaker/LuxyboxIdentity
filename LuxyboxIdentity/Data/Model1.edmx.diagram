@@ -10,11 +10,7 @@
         <EntityTypeShape EntityType="STAJER2019Model.Product" Width="1.5" PointX="3" PointY="3.25" />
         <AssociationConnector Association="STAJER2019Model.FK_Product_Category" />
         <AssociationConnector Association="STAJER2019Model.FK_OrderItem_Product" />
-        <EntityTypeShape EntityType="STAJER2019Model.CartItem" Width="1.5" PointX="5.25" PointY="7.375" />
-        <AssociationConnector Association="STAJER2019Model.FK_CartItem_Product" />
-        <EntityTypeShape EntityType="STAJER2019Model.Cart" Width="1.5" PointX="7.375" PointY="0.875" />
         <EntityTypeShape EntityType="STAJER2019Model.Order" Width="1.5" PointX="5.375" PointY="0.875" />
-        <AssociationConnector Association="STAJER2019Model.FK_CartItem_Cart" />
         <AssociationConnector Association="STAJER2019Model.FK_OrderItem_Order" />
         <EntityTypeShape EntityType="STAJER2019Model.AspNetRole" Width="1.5" PointX="7.375" PointY="5.5" />
         <EntityTypeShape EntityType="STAJER2019Model.AspNetUserClaim" Width="1.5" PointX="11.875" PointY="4" />
@@ -24,6 +20,10 @@
         <AssociationConnector Association="STAJER2019Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="STAJER2019Model.AspNetUserRoles" />
         <EntityTypeShape EntityType="STAJER2019Model.CheckOrder" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="STAJER2019Model.Cart" Width="1.5" PointX="6" PointY="9" />
+        <EntityTypeShape EntityType="STAJER2019Model.CartItem" Width="1.5" PointX="8.25" PointY="0.75" />
+        <AssociationConnector Association="STAJER2019Model.FK_CartItem_Cart" />
+        <AssociationConnector Association="STAJER2019Model.FK_CartItem_Product" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

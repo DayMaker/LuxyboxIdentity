@@ -1,34 +1,7 @@
-﻿
-@model LuxyboxIdentity.Data.Product
-
-@{
-    ViewBag.Title = "Details";
-
-
+﻿@{
+    ViewBag.Title = "About";
 }
-<p>
-    @Model.Category.Name > @Model.Name
-</p>
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
 
-
-@{
-    <div>
-
-            <div class="products">
-                <div class="product-row">
-                    
-
-                        <img class="product-image" src="@Model.ImgUrl" />
-
-                        <p class="product-name">@Model.Name</p>
-                        <p class="product-price" @Model.Price></p>
-                        
-
-                </div>
-            </div>
-
-
-    </div>
-}
-
-<div class="clearfix"></div>
+<p>Use this area to provide additional information.</p>

@@ -219,3 +219,24 @@ textarea {
     right: 45px;
     width: 45px;
 }
+/*.btn-primary .btntext-center {
+    background-color: orange;
+    color: white;
+    float: right;
+}
+.list-item{
+    float:right;
+    width:50px;
+    color:green;
+}*/
+.total-price{
+    float:right;
+}
+.total-price-block {
+display:block;
+}
+
+
+   
+
+

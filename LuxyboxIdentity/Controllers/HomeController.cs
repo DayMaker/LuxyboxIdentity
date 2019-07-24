@@ -109,6 +109,11 @@ namespace LuxyboxIdentity.Controllers
             return View();
         }
 
-        
+        public ActionResult CheckOrder()
+        {
+            return View();
+        }
+
+
     }
 }

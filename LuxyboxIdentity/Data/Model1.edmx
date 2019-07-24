@@ -32,6 +32,26 @@
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="ImgUrl" Type="varchar" MaxLength="500" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'STAJER2019.dbo.CheckOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CheckOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ShipmentAdress" />
+            <PropertyRef Name="InvoiceAdress" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="SessionId" />
+            <PropertyRef Name="NameSurname" />
+            <PropertyRef Name="InvoiceName" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ShipmentAdress" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="InvoiceAdress" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="SessionId" Type="int" Nullable="false" />
+          <Property Name="NameSurname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="InvoiceName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="Id" />
@@ -128,6 +148,17 @@
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CheckOrder" EntityType="Self.CheckOrder" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CheckOrder].[Id] AS [Id], 
+    [CheckOrder].[ShipmentAdress] AS [ShipmentAdress], 
+    [CheckOrder].[InvoiceAdress] AS [InvoiceAdress], 
+    [CheckOrder].[CreateDate] AS [CreateDate], 
+    [CheckOrder].[SessionId] AS [SessionId], 
+    [CheckOrder].[NameSurname] AS [NameSurname], 
+    [CheckOrder].[InvoiceName] AS [InvoiceName]
+    FROM [dbo].[CheckOrder] AS [CheckOrder]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_CartItem_Cart" Association="Self.FK_CartItem_Cart">
             <End Role="Cart" EntitySet="Cart" />
             <End Role="CartItem" EntitySet="CartItem" />
@@ -180,6 +211,7 @@
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderItem" EntitySet="OrderItems" />
           </AssociationSet>
+          <EntitySet Name="CheckOrders" EntityType="STAJER2019Model.CheckOrder" />
         </EntityContainer>
         <EntityType Name="Category">
           <Key>
@@ -307,6 +339,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="CheckOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ShipmentAdress" />
+            <PropertyRef Name="InvoiceAdress" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="SessionId" />
+            <PropertyRef Name="NameSurname" />
+            <PropertyRef Name="InvoiceName" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ShipmentAdress" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceAdress" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SessionId" Type="Int32" Nullable="false" />
+          <Property Name="NameSurname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -371,6 +421,19 @@
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CheckOrders">
+            <EntityTypeMapping TypeName="STAJER2019Model.CheckOrder">
+              <MappingFragment StoreEntitySet="CheckOrder">
+                <ScalarProperty Name="InvoiceName" ColumnName="InvoiceName" />
+                <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="InvoiceAdress" ColumnName="InvoiceAdress" />
+                <ScalarProperty Name="ShipmentAdress" ColumnName="ShipmentAdress" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

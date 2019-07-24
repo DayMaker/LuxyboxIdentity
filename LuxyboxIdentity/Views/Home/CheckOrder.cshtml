@@ -1,45 +1,63 @@
-﻿@model IEnumerable<LuxyboxIdentity.Data.Cart>
+﻿@model LuxyboxIdentity.Data.CheckOrder
 
 @{
-    ViewBag.Title = "CheckOrder";
+    ViewBag.Title = "View";
 }
 
-<h2>CheckOrder</h2>
+<h2>View</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.MemberId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SessionId)
-        </th>
-        <th></th>
-    </tr>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>CheckOrder</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShipmentAdress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ShipmentAdress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ShipmentAdress, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-@*@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MemberId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SessionId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.InvoiceAdress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.InvoiceAdress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InvoiceAdress, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-</table>
+        
+
+        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NameSurname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NameSurname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NameSurname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.InvoiceName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.InvoiceName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InvoiceName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

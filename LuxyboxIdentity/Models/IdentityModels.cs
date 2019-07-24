@@ -29,5 +29,7 @@ namespace LuxyboxIdentity.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<LuxyboxIdentity.Data.CheckOrder> CheckOrders { get; set; }
     }
 }

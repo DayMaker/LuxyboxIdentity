@@ -11,29 +11,23 @@
     <div class="product-list">
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-6">Ürün Adı</div>
-            <div class="col-md-2">Adet</div>
-            <div class="col-md-2">Fiyat</div>
-        </div>
-
-        <div class="row product-item">
-            <div class="col-md-2"><img class="blg" src="~/Content/img/blg.jpg" /></div>
-            <div class="col-md-6"><a href="https://www.hepsiburada.com/apple-macbook-pro-touch-bar-intel-core-i5-8259u-8gb-256gb-ssd-macos-13-qhd-tasinabilir-bilgisayar-mr9q2tu-a-gri-p-HBV00000CVXAY?magaza=teknoraks">APPLE MACBOOK PRO</a></div>
-            <div class="col-md-2"> <input type="text" class="form-control" placeholder="1" aria-describedby="basic-addon2"></div>
-            
-            <div class="col-md-2">1250tl</div>
-        </div>
-        <div class="row product-item">
-            <div class="col-md-2"><img class="blg" src="~/Content/img/blg.jpg" /></div>
-            <div class="col-md-6"><a href="https://www.hepsiburada.com/apple-macbook-pro-touch-bar-intel-core-i5-8259u-8gb-256gb-ssd-macos-13-qhd-tasinabilir-bilgisayar-mr9q2tu-a-gri-p-HBV00000CVXAY?magaza=teknoraks">APPLE MACBOOK PRO</a></div>
-            <div class="col-md-2"> <input type="text" class="form-control" value="1" aria-d
-                                          escribedby="basic-addon2"></div>
-            <div class="col-md-2">1250tl</div>
+            <div class="col-md-6 column-title">Ürün Adı</div>
+            <div class="col-md-2 column-title text-right">Adet</div>
+            <div class="col-md-2 column-title text-right">Fiyat</div>
         </div>
 
         @foreach (var item in Model.CartItems)
         {
-            <p class="product-name">@item.Product.Name </p>
+            <div class="row product-item">
+                <div class="col-md-2"><img class="product-image" src="@item.Product.ImgUrl" /></div>
+                <div class="col-md-6 product-name">        
+                    <a href="/Home/Details/@item.Product.Id">@item.Product.Name</a>
+                </div>
+                <div class="col-md-2 text-center">
+                    <input type="text" class="form-control" value="1" aria-describedby="basic-addon2">
+                </div>
+                <div class="col-md-2 text-right">@item.Product.Price</div>
+            </div>
         }
     </div>
 </div>

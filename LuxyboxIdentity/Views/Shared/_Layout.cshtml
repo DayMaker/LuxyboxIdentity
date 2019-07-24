@@ -33,7 +33,11 @@
 
                 </ul>
                 @Html.Partial("_LoginPartial")
-               
+
+            <div class="cart-icon">
+                <span class="cart-icon-count">@(currentCart == null ? "" : currentCart.CartItems.Count.ToString())</span>
+                <a href="@Url.Action("Cart","Home")"> <img class="basket" src="~/Content/img/basket.png" /></a>
+            </div>
              
             </div>
             
@@ -47,7 +51,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>@(currentCart == null? "":currentCart.CartItems.Count.ToString())</p>
+            
         </footer>
     </div>
 

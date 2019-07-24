@@ -18,7 +18,7 @@ namespace LuxyboxIdentity.Data
         public string ShipmentAdress { get; set; }
         public string InvoiceAdress { get; set; }
         public System.DateTime CreateDate { get; set; }
-        public int SessionId { get; set; }
+        public string SessionId { get; set; }
         public string NameSurname { get; set; }
         public string InvoiceName { get; set; }
     }

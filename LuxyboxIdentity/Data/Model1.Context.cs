@@ -31,5 +31,6 @@ namespace LuxyboxIdentity.Data
         public virtual DbSet<CartItem> CartItems { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<CheckOrder> CheckOrders { get; set; }
     }
 }

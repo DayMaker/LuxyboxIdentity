@@ -30,6 +30,11 @@
                                           escribedby="basic-addon2"></div>
             <div class="col-md-2">1250tl</div>
         </div>
+        <div>
+            <button onclick="('').val(), $('').val();" class="btntext-center" id="addCartBtn">
+                @Html.ActionLink("Alışverişi Tamamla", "CheckOrder", "Home")
+                </button>
+        </div>
 
         @foreach (var item in Model.CartItems)
         {

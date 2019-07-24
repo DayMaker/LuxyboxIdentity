@@ -112,6 +112,31 @@ namespace LuxyboxIdentity.Controllers
         {
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CheckOrder([Bind(Include = "Id,ShipmentAdress,InvoiceAdress,CreateDate,NameSurname,InvoiceName,SessionId")] CheckOrder checkorder)
+        {
+            if (ModelState.IsValid)
+            {
+                string sessionId = Session["sessionId"].ToString();
+                checkorder.SessionId = sessionId;
+                checkorder.CreateDate = DateTime.Now;
+                dbContext.CheckOrders.Add(checkorder);
+                //dbContext.Carts.Count == null;
+                //dbContext.Carts.Count
+                return RedirectToAction("Index");
+            }
+
+            return View(checkorder);
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                dbContext.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
 
 

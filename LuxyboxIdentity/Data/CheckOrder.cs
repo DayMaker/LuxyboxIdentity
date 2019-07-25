@@ -14,6 +14,12 @@ namespace LuxyboxIdentity.Data
     
     public partial class CheckOrder
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CheckOrder()
+        {
+            this.CartItems = new HashSet<CartItem>();
+        }
+    
         public int Id { get; set; }
         public string ShipmentAdress { get; set; }
         public string InvoiceAdress { get; set; }
@@ -21,5 +27,9 @@ namespace LuxyboxIdentity.Data
         public string SessionId { get; set; }
         public string NameSurname { get; set; }
         public string InvoiceName { get; set; }
+        public Nullable<decimal> TotalPrice { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CartItem> CartItems { get; set; }
     }
 }

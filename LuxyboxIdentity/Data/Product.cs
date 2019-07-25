@@ -17,8 +17,8 @@ namespace LuxyboxIdentity.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.OrderItems = new HashSet<OrderItem>();
             this.CartItems = new HashSet<CartItem>();
+            this.OrderItems = new HashSet<OrderItem>();
         }
     
         public int Id { get; set; }
@@ -30,10 +30,12 @@ namespace LuxyboxIdentity.Data
         public string Info { get; set; }
         public string Publisher { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CartItem> CartItems { get; set; }
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderItem> OrderItems { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CartItem> CartItems { get; set; }
+        public virtual Product Product1 { get; set; }
+        public virtual Product Product2 { get; set; }
     }
 }

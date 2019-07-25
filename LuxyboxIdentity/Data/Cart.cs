@@ -25,6 +25,8 @@ namespace LuxyboxIdentity.Data
         public System.DateTime CreateDate { get; set; }
         public string SessionId { get; set; }
     
+        public virtual Cart Cart1 { get; set; }
+        public virtual Cart Cart2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CartItem> CartItems { get; set; }
     }

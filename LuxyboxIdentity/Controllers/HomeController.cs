@@ -82,8 +82,9 @@ namespace LuxyboxIdentity.Controllers
         }
         public ActionResult Cart()
         {
-            
+           
             string sessionId = Session["sessionId"].ToString();
+            
             
             Cart cart = dbContext.Carts.SingleOrDefault(q => q.SessionId == sessionId);
             if (cart == null)
@@ -98,6 +99,12 @@ namespace LuxyboxIdentity.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+        public ActionResult Shopping()
+        {
+            ViewBag.Message = "Bizi tercih ettiğiniz için teşekkür ederiz.";
 
             return View();
         }
@@ -116,15 +123,26 @@ namespace LuxyboxIdentity.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CheckOrder([Bind(Include = "Id,ShipmentAdress,InvoiceAdress,CreateDate,NameSurname,InvoiceName,SessionId")] CheckOrder checkorder)
         {
+            var cartitems = dbContext.CartItems.ToList();
+            
             if (ModelState.IsValid)
             {
+
                 string sessionId = Session["sessionId"].ToString();
                 checkorder.SessionId = sessionId;
                 checkorder.CreateDate = DateTime.Now;
+                var cart = (Cart)ViewBag.CurrentCart;
+                decimal? totalPrice = 0;
+                foreach (var item in cart.CartItems)
+                {
+                    totalPrice += item.Product.Price;
+                }
+                checkorder.TotalPrice = totalPrice.Value;
                 dbContext.CheckOrders.Add(checkorder);
-                //dbContext.Carts.Count == null;
-                //dbContext.Carts.Count
-                return RedirectToAction("Index");
+
+                dbContext.Carts.Remove(cart);
+                dbContext.SaveChanges();
+                return RedirectToAction("Shopping");
             }
 
             return View(checkorder);

@@ -183,9 +183,15 @@ textarea {
     padding: 10px;
 }
 
-.product-item .product-image {
-    width: 55px;
-}
+    .product-item .product-price {
+        width: 50px;
+        float: right;
+        text-align: center;
+    }
+
+    .product-item .product-image {
+        width: 55px;
+    }
 
     .product-item .product-name {
         font-size: 20px;
@@ -210,7 +216,7 @@ textarea {
     background-color: orangered;
     right: -2px;
     color: white;
-    position: absolute;
+    position:absolute;
     border-radius:50%;
     width: 20px;
     text-align:center;
@@ -241,8 +247,17 @@ display:block;
     margin-top: -10px;
     text-align: left;
 }
+.form-horizontal .delivery-name{
+    color:orangered;
+
+}
+.shopping .chechmark {
+    height: 80px;
+    width: 100px;
+}
+.shopping .take-order{
+    font-size:25px;
+}
 
 
    
-
-

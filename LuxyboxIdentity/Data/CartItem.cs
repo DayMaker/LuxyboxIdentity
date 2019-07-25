@@ -19,8 +19,10 @@ namespace LuxyboxIdentity.Data
         public int ProductId { get; set; }
         public System.DateTime CreateDate { get; set; }
         public int Quantity { get; set; }
+        public Nullable<int> CheckOrderId { get; set; }
     
         public virtual Cart Cart { get; set; }
+        public virtual CheckOrder CheckOrder { get; set; }
         public virtual Product Product { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿@using LuxyboxIdentity.Models;
-
+@using System.Linq;
 @{
     ViewBag.Title = "Cart";
 }
@@ -19,16 +19,17 @@
 
             @foreach (var item in Model.CartItems)
             {
-                <div class="row product-item">
-                    <div class="col-md-2"><img class="product-image" src="@item.Product.ImgUrl" /></div>
-                    <div class="col-md-6 product-name">
-                        <a href="/Home/Details/@item.Product.Id">@item.Product.Name</a>
-                    </div>
-                    <div class="col-md-2 text-center">
-                        <input type="text" class="form-control" value="1" aria-describedby="basic-addon2">
-                    </div>
-                    <div class="col-md-2 text-right">@item.Product.Price</div>
-                </div>
+        <div class="row product-item">
+            <div class="col-md-2"><img class="product-image" src="@item.Product.ImgUrl" /></div>
+            <div class="col-md-6 product-name">
+                <a href="/Home/Details/@item.Product.Id">@item.Product.Name</a>
+            </div>
+            <div class="col-md-2 text-center">
+                <input type="text" class="form-control" value="1" aria-describedby="basic-addon2">
+            </div>
+            <div class="col-md-2 text-right">@item.Product.Price</div>
+            
+        </div>
             }
 
         </div>
@@ -37,8 +38,12 @@
         <div class="total-price">
             <span class="title total-price-block">SİPARİŞ ÖZETİ</span>
             <div class="total-price-block">
-                <span>Ödenecek Tutar:</span>
-                <span class="total" data-bind="text:totalPrice"></span>
+               
+                <div class="author">
+                    <b>Toplam Fiyat:</b>
+                    <span>@Model.CartItems.Select(q=>q.Product.Price.Value).Sum()</span>
+                </div>
+                
             </div>
             <button onclick="('').val(), $('').val();" class="btntext-center total-price-block" id="addCartBtn">
                 @Html.ActionLink("Alışverişi Tamamla", "CheckOrder", "Home")

@@ -9,51 +9,52 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>CheckOrder</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-horizontal">
+        <h4>CheckOrder</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <form>
         <div class="form-group">
-            @Html.LabelFor(model => model.ShipmentAdress, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input class="form-control" id="ShipmentAdress" type="text" />
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.InvoiceAdress, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input class="form-control" id="invocieAdress" type="text" />
-            </div>
-        </div>
-
-        
-
-        
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NameSurname, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NameSurname, "ADI SOYADI:", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NameSurname, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NameSurname, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShipmentAdress, "GÖNDERİ ADRESİ:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ShipmentAdress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ShipmentAdress, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.InvoiceName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.InvoiceAdress, "FATURA ADRESİ:", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input class="form-control" id="Namesurname" type="text" />
+                @Html.EditorFor(model => model.InvoiceAdress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InvoiceAdress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.InvoiceName, "FATURA İSMİ:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.InvoiceName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InvoiceName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="ONAYLA" class="btn btn-default" />
             </div>
         </div>
+    </form>
+
     </div>
 }
+
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

@@ -237,8 +237,8 @@ textarea {
 display:block;
 }
 .form-horizontal .control-label {
-    padding-top: 24px;
-    margin-top: 13px;
+    padding-top: 25px;
+    margin-top: -10px;
     text-align: left;
 }
 

@@ -260,6 +260,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\basket.png" />
     <Content Include="Content\img\blg.jpg" />
+    <Content Include="Content\img\checkmark.png" />
     <Content Include="Content\img\luxybox.png" />
     <Content Include="Data\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

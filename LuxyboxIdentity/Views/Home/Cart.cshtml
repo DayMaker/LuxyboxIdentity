@@ -19,17 +19,17 @@
 
         @foreach (var item in Model.CartItems)
         {
-            <div class="row product-item">
+            <div class="row product-item" data-product-id="@item.Product.Id">
                 <div class="col-md-2"><img class="product-image" src="@item.Product.ImgUrl" /></div>
                 <div class="col-md-6 product-name">
                     <a href="/Home/Details/@item.Product.Id">@item.Product.Name</a>
                 </div>
                 <div class="col-md-2 text-center">
                     <button id="btnDecrease" type="button" class="btn btn-default">-</button>
-                    <input id="inputPrice" type="text" class="form-control product-price" value="1">
+                    <input id="inputPrice" type="text" class="form-control product-price" value="@item.Quantity">
                     <button id="btnIncrease" type="button" class="btn btn-default">+</button>
                 </div>
-                <div class="col-md-2 text-right">@item.Product.Price</div>
+                <div class="col-md-2 text-right price">@item.Product.Price</div>
 
             </div>
         }

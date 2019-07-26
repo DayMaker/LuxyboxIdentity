@@ -90,6 +90,7 @@ namespace LuxyboxIdentity.Controllers
             dbContext.SaveChanges();
             return Json(new { result= true });
         }
+
         public ActionResult AddToCart(int id)
         {
             ViewBag.Message = "Ürün Sepete Eklendi";

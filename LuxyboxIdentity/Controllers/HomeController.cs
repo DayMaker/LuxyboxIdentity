@@ -93,7 +93,34 @@ namespace LuxyboxIdentity.Controllers
             }
             return View(cart);
         }
+        public ActionResult Delete(int? id)
+        {
+            string sessionId = Session["sessionId"].ToString();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = dbContext.Products.SingleOrDefault(q => q.Id == id);
+            Cart cart = dbContext.Carts.SingleOrDefault(q => q.SessionId == sessionId);
+            dbContext.Carts.Remove(cart);
+            if (cart == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cart);
+        }
 
+        // POST: Movies/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            string sessionId = Session["sessionId"].ToString();
+            Cart cart = dbContext.Carts.SingleOrDefault(q => q.SessionId == sessionId);
+            dbContext.Carts.Remove(cart);
+            dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
 
         public ActionResult About()

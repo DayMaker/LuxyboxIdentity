@@ -7,6 +7,7 @@ using LuxyboxIdentity.Models;
 using LuxyboxIdentity.Data;
 using System.Net;
 using Microsoft.AspNet.Identity;
+using System.Web.Helpers;
 
 namespace LuxyboxIdentity.Controllers
 {
@@ -57,7 +58,38 @@ namespace LuxyboxIdentity.Controllers
             }
             return View(product);
         }
+        //public ActionResult IncreaseQuantity(int productId) //sayfa yönlendirme yaparak arttırma
+        //{
+        //    var sessionId = Session["sessionId"].ToString();
+        //    var currentCart = dbContext.Carts.SingleOrDefault(q => q.SessionId == sessionId);
 
+        //    if (HttpContext.User.Identity.IsAuthenticated)
+        //    {
+        //        currentCart.MemberId = User.Identity.GetUserId();
+        //    }
+
+        //    CartItem item = currentCart.CartItems.SingleOrDefault(q=>q.ProductId == productId);
+        //    item.Quantity++;
+        //    dbContext.SaveChanges();
+        //    return RedirectToAction("cart");
+        //}
+
+        [HttpPost]
+        public JsonResult CartItemQuantityUpdate(int productId,int quantity)
+        {
+            var sessionId = Session["sessionId"].ToString();
+            var currentCart = dbContext.Carts.SingleOrDefault(q => q.SessionId == sessionId);
+
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                currentCart.MemberId = User.Identity.GetUserId();
+            }
+
+            CartItem item = currentCart.CartItems.SingleOrDefault(q => q.ProductId == productId);
+            item.Quantity = quantity;
+            dbContext.SaveChanges();
+            return Json(new { result= true });
+        }
         public ActionResult AddToCart(int id)
         {
             ViewBag.Message = "Ürün Sepete Eklendi";

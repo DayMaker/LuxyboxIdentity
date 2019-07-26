@@ -151,16 +151,6 @@ textarea {
 }
 
 
-
-.row {
-
-}
-.form-control{
-    /*width:34px;*/
-   float:left;
-   margin-top:6px;
-   width: 100%;
-}
 /*.col-md-2 {
     text-align: right;
     font-family: Arial Rounded MT;
@@ -185,8 +175,12 @@ textarea {
 
     .product-item .product-price {
         width: 50px;
-        float: right;
+        float: none;
         text-align: center;
+        display: inline-block;
+        margin-left: -4px;
+        margin-right: -4px;
+        border-radius: unset;
     }
 
     .product-item .product-image {

@@ -38,20 +38,20 @@
     </div>
 
 
-    <div class="total-price">
+    <div class="row total-price">
         <span class="title total-price-block">SİPARİŞ ÖZETİ</span>
         <div class="total-price-block">
 
             <div class="author">
                 <b>Toplam Fiyat:</b>
-                <span>@Model.CartItems.Select(q => q.Product.Price.Value).Sum()</span>
+                <span class="cart-total-price"></span>
             </div>
 
         </div>
-        <button onclick="('').val(), $('').val();" class="btntext-center total-price-block" id="addCartBtn">
+        <button class="btntext-center total-price-block" id="addCartBtn">
             @Html.ActionLink("Alışverişi Tamamla", "CheckOrder", "Home")
         </button>
-        <button onclick="('').val(), $('').val();" class="btntext-center total-price-block" id="addCartBtn">
+        <button  class="btntext-center total-price-block" id="addCartBtn">
             @Html.ActionLink("Sepeti Boşalt", "Delete", new { id = 0 })
         </button>
     </div>

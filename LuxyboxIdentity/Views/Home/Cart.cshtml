@@ -28,8 +28,9 @@
                     <button id="btnDecrease" type="button" class="btn btn-default">-</button>
                     <input id="inputPrice" type="text" class="form-control product-price" value="@item.Quantity">
                     <button id="btnIncrease" type="button" class="btn btn-default">+</button>
+                    <button id="btnDelete" type="button" class="btn btn-default">x</button>
                 </div>
-                <div class="col-md-2 text-right price">@(item.Product.Price * item.Quantity)</div>
+                <div class="col-md-2 text-right price"> @(item.Product.Price * item.Quantity)</div>
 
             </div>
         }

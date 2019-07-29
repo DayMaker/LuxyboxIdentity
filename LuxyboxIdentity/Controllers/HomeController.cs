@@ -88,9 +88,33 @@ namespace LuxyboxIdentity.Controllers
             CartItem item = currentCart.CartItems.SingleOrDefault(q => q.ProductId == productId);
             item.Quantity = quantity;
             dbContext.SaveChanges();
+            RedirectToAction("cart");
             return Json(new { result= true });
         }
+        [HttpPost]
 
+        public JsonResult CartItemDeleteUpdate(int productId)
+        {
+            var sessionId = Session["sessionId"].ToString();
+            var currentCart = dbContext.Carts.SingleOrDefault(q => q.SessionId == sessionId);
+           
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                currentCart.MemberId = User.Identity.GetUserId();
+            }
+
+            CartItem item = currentCart.CartItems.SingleOrDefault(q => q.ProductId == productId);
+            Cart cart = dbContext.Carts.SingleOrDefault(q => q.SessionId == sessionId);
+            dbContext.Carts.Remove(cart);
+            if (cart == null)
+            {
+                return Json(new { result = false });
+            }
+            
+            dbContext.SaveChanges();
+            return Json(new { result = true });
+
+        }
         public ActionResult AddToCart(int id)
         {
             ViewBag.Message = "Ürün Sepete Eklendi";

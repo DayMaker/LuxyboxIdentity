@@ -103,8 +103,8 @@ namespace LuxyboxIdentity.Controllers
                 currentCart.MemberId = User.Identity.GetUserId();
             }
 
-            CartItem item = currentCart.CartItems.SingleOrDefault(q => q.ProductId == productId);           
-            dbContext.CartItems.Remove(item);
+            CartItem item = currentCart.CartItems.SingleOrDefault(q => q.ProductId == productId);
+           dbContext.CartItems.Remove(item);
             if (item == null)
             {
                 return Json(new { result = false });

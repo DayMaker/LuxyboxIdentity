@@ -12,6 +12,10 @@
         var productId = $(this).closest(".product-item").attr("data-product-id");
 
         updateQuantity(productId, value);
+        var productPrice = $(this).closest(".product-item").attr("data-product-price");
+        productPrice = productPrice.replace(",", ".");
+        console.log((parseFloat(productPrice) * value).toFixed(2));
+        updateQuantity(productPrice, value);
        
     });
 
@@ -26,16 +30,19 @@
         $("#inputPrice").val(value);
 
         var productId = $(this).closest(".product-item").attr("data-product-id");
-
         updateQuantity(productId, value);
+        var productPrice = $(this).closest(".product-item").attr("data-product-price");
+        productPrice = productPrice.replace(",", ".");
+        console.log((parseFloat(productPrice) * value).toFixed(2));
+        
     });
+    
 
-
-    function updateQuantity(productId, quantity) {
+    function updateQuantity(productId, quantity, productPrice) {
         $.ajax({
             method: "POST",
             url: "/Home/CartItemQuantityUpdate",
-            data: { productId: productId, quantity: quantity }
+            data: { productId: productId, quantity: quantity}
         })
             .done(function (msg) {
             });
@@ -44,3 +51,7 @@
 
 });
 
+Number.prototype.round = function (p) {
+    p = p || 10;
+    return parseFloat(this.toFixed(p));
+};

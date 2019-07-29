@@ -38,7 +38,7 @@
     });
     
 
-    function updateQuantity(productId, quantity, productPrice) {
+    function updateQuantity(productId, quantity) {
         $.ajax({
             method: "POST",
             url: "/Home/CartItemQuantityUpdate",

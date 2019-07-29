@@ -24,13 +24,13 @@
                 <div class="col-md-6 product-name">
                     <a href="/Home/Details/@item.Product.Id">@item.Product.Name</a>
                 </div>
-                <div class="col-md-2 text-center">
-                    <button id="btnDecrease" type="button" class="btn btn-default">-</button>
-                    <input id="inputPrice" type="text" class="form-control product-price" value="@item.Quantity">
-                    <button id="btnIncrease" type="button" class="btn btn-default">+</button>
-                    <button id="btnDelete" type="button" class="btn btn-default">x</button>
+                <div class="col-md-2 text-center"> 
+                    <button type="button" class="btn btn-default btn-decrease">-</button>
+                    <input type="text" class="form-control product-quantity" value="@item.Quantity">
+                    <button type="button" class="btn btn-default btn-increase">+</button>
+                    <button type="button" class="btn btn-default btn-delete">x</button>
                 </div>
-                <div class="col-md-2 text-right price"> @(item.Product.Price * item.Quantity)</div>
+                <div class="col-md-2 text-right product-price"> @(item.Product.Price * item.Quantity)</div>
 
             </div>
         }

@@ -104,9 +104,8 @@ namespace LuxyboxIdentity.Controllers
             }
 
             CartItem item = currentCart.CartItems.SingleOrDefault(q => q.ProductId == productId);
-            Cart cart = dbContext.Carts.SingleOrDefault(q => q.SessionId == sessionId);
-            dbContext.Carts.Remove(cart);
-            if (cart == null)
+           dbContext.CartItems.Remove(item);
+            if (item == null)
             {
                 return Json(new { result = false });
             }

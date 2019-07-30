@@ -230,6 +230,12 @@ namespace LuxyboxIdentity.Controllers
 
             return View(checkorder);
         }
+        public ActionResult Login()
+        {
+            ViewBag.Message = "Üye Girişi Yapmak İster Misiniz?";
+
+            return View();
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

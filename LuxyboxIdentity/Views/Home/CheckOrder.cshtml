@@ -48,7 +48,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.InvoiceName, "TOPLAM FİYAT:", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @currentCart.CartItems.Select(q=>q.Product.Price.Value).Sum()
+            @currentCart.CartItems.Select(q=>q.Product.Price.Value * q.Quantity).Sum()
         </div>
     </div>
 

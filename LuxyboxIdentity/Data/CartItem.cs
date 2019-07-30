@@ -21,8 +21,8 @@ namespace LuxyboxIdentity.Data
         public int Quantity { get; set; }
         public Nullable<int> CheckOrderId { get; set; }
     
-        public virtual Cart Cart { get; set; }
         public virtual CheckOrder CheckOrder { get; set; }
+        public virtual Cart Cart { get; set; }
         public virtual Product Product { get; set; }
     }
 }

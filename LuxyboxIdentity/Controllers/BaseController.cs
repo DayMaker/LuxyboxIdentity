@@ -15,6 +15,7 @@ namespace LuxyboxIdentity.Controllers
             dbContext = new Data.Entities();
             base.Initialize(requestContext);
         }
+
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (Session["sessionId"] == null)

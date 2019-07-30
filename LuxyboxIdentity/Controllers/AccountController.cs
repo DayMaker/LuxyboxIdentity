@@ -9,11 +9,12 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using LuxyboxIdentity.Models;
+using LuxyboxIdentity.Data;
 
 namespace LuxyboxIdentity.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -79,6 +80,12 @@ namespace LuxyboxIdentity.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    var currentCart = (Cart)ViewBag.CurrentCart;
+                    if(currentCart!=null)
+                    {
+                        currentCart.MemberId = User.Identity.GetUserId();
+                        await dbContext.SaveChangesAsync();
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

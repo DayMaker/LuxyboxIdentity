@@ -4,6 +4,7 @@
         var $inputQuantity = $productItem.find(".product-quantity");
         var productId = $productItem.attr("data-product-id");
         var productPrice = $productItem.attr("data-product-price");
+        var cardPrice = $cardPriceItem.attr("card-price");
 
         var value = parseInt($inputQuantity.val());
         value = value - 1;
@@ -16,6 +17,7 @@
         productPrice = productPrice.replace(",", ".");
         productPrice = (parseFloat(productPrice) * value).toFixed(2);
         $productItem.find(".product-price").text(productPrice);
+
     });
 
     $(".btn-increase").on("click", function () {

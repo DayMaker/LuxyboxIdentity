@@ -44,7 +44,7 @@
 
             <div class="author">
                 <b>Toplam Fiyat:</b>
-                <span>@Model.CartItems.Select(q => q.Product.Price.Value).Sum()</span>
+                <span class="card-price">@Model.CartItems.Select(q => q.Product.Price.Value).Sum()</span>
             </div>
 
         </div>

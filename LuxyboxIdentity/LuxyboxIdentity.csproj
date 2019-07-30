@@ -359,6 +359,7 @@
     <Content Include="Views\Home\CheckOrder.cshtml" />
     <Content Include="Views\Home\Shopping.cshtml" />
     <Content Include="Views\Home\Delete.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

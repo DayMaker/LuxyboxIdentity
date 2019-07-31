@@ -18,6 +18,19 @@ namespace LuxyboxIdentity
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional });
 
+
+            routes.MapRoute(
+                name: "Categoriess",
+                url: "Home/{Products}/{categorytId}",
+                new { controller = "Home", action = "Products", categoryId = UrlParameter.Optional });
+
+            routes.MapRoute(
+              name: "Products",
+              url: "Home/{Details}/{productId}",
+              new { controller = "Home", action = "Details", productId = UrlParameter.Optional });
+
+
+
             //routes.MapRoute(
             //    name: "Products",
             //    url: "{Home}/{action}/{Products}",

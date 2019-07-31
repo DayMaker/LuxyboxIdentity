@@ -130,9 +130,16 @@ namespace LuxyboxIdentity.Controllers
             {
                 currentCart.MemberId = User.Identity.GetUserId();
             }
-
-            CartItem item = new CartItem { CartId = currentCart.Id, CreateDate = DateTime.Now, ProductId = id, Quantity = 1 };
-            currentCart.CartItems.Add(item);
+            var item = currentCart.CartItems.SingleOrDefault(q => q.ProductId == id);
+            if (item==null)
+            {
+                item = new CartItem { CartId = currentCart.Id, CreateDate = DateTime.Now, ProductId = id, Quantity = 1 };
+                currentCart.CartItems.Add(item);
+            }
+            else {
+                item.Quantity++;
+            }
+            
             dbContext.SaveChanges();
             return RedirectToAction("Cart");
         }
@@ -200,6 +207,7 @@ namespace LuxyboxIdentity.Controllers
         }
         public ActionResult CheckOrder()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated) return Redirect("/account/login?returnUrl=/home/checkorder");
             return View();
         }
         [HttpPost]
@@ -230,12 +238,7 @@ namespace LuxyboxIdentity.Controllers
 
             return View(checkorder);
         }
-        public ActionResult Login()
-        {
-            ViewBag.Message = "Üye Girişi Yapmak İster Misiniz?";
-
-            return View();
-        }
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

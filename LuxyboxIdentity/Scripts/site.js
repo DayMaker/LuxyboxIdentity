@@ -59,7 +59,6 @@ function totalPriceRefresh() {
 }
 
 
-
 function updateQuantity(productId, quantity) {
     $.ajax({
         method: "POST",

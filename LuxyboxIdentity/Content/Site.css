@@ -245,6 +245,12 @@ display:block;
     color:orangered;
 
 }
+.form-horizontal .contact-label {
+    padding-top: 12px;
+    margin-top: -10px;
+    text-align: left;
+    margin-bottom:20px;
+}
 .shopping .chechmark {
     height: 80px;
     width: 100px;
@@ -254,4 +260,6 @@ display:block;
 }
 
 
-   
+.input-required{
+    border-color:red;
+}

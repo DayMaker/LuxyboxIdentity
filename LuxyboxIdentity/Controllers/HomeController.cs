@@ -198,13 +198,26 @@ namespace LuxyboxIdentity.Controllers
 
             return View();
         }
-
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
+            dbContext.SaveChanges();
             return View();
         }
+
+
+        [HttpPost]
+
+        public ActionResult Contact([Bind(Include = "Id,Name,Mail,Subjact,Message")] Contact contact)
+        {
+            if (ModelState.IsValid)
+            {
+                dbContext.Contacts.Add(contact);
+                dbContext.SaveChanges();
+                return RedirectToAction("contact");
+            }
+            return View();
+        }
+
         public ActionResult CheckOrder()
         {
             if (!HttpContext.User.Identity.IsAuthenticated) return Redirect("/account/login?returnUrl=/home/checkorder");

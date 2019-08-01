@@ -5,19 +5,23 @@
 
 @{ ViewBag.Title = "Kitaplar";}
 
-    <div class="left-categorys">
-        @{
-            foreach (var category in Model.Categories)
-            {
-                <ul>
-                    <li>
-                        <a href="@Url.Action("Products", "Home", new { id = category.Id})">@category.Name</a>
-                    </li>
-                </ul>
-            }
+<div class="left-categorys">
+    @{
+        foreach (var category in Model.Categories)
+        {
+            <ul>
+                <li>
+                    <a href="@Url.Action("Products", "Home", new { id = category.Id})">@category.Name</a>
+                </li>
+            </ul>
         }
-    </div>
-
+    }
+</div>
+<ul>
+    <li>
+        <a href="@Url.Action("Products", "Home")"></a>
+    </li>
+</ul>
 
 @{
     <div class="right-products">

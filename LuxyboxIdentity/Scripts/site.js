@@ -17,13 +17,29 @@ $(".btn-delete").on("click", function () {
     var productId = $productItem.attr("data-product-id");
     updateDelete(productId, $productItem);
 });
+$(".btn-contact").on("click", function () {
+    var name = $("#name").val();
+    var mail = $("#mail").val();
+    var subject = $("#subject").val();
+    var message = $("#message").val();
+    
+
+    $.ajax({
+        url: "/Home/Contact",
+        type: 'POST',
+        data: {name:name,mail:mail,subject:subject,message:message},
+
+    })
+        .done(function (msg) {
+        });
+});
 
 function ProductQuantityChange($this, type) {
     var $productItem = $this.closest(".product-item");
     var $inputQuantity = $productItem.find(".product-quantity");
     var productId = $productItem.attr("data-product-id");
     var productPrice = $productItem.attr("data-product-price");
-
+    
     var value = parseInt($inputQuantity.val());
 
     if (type === "+") {
@@ -84,6 +100,8 @@ function updateDelete(productId, $productItem) {
         }
     });
 }
+     
+ 
 
 function refreshCartIconCount() {
     var $productItems = $(".product-list .product-item");   

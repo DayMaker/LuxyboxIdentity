@@ -8,6 +8,7 @@ using LuxyboxIdentity.Data;
 using System.Net;
 using Microsoft.AspNet.Identity;
 using System.Web.Helpers;
+using System.Data.Entity.Core;
 
 namespace LuxyboxIdentity.Controllers
 {
@@ -75,7 +76,7 @@ namespace LuxyboxIdentity.Controllers
         //}
 
         [HttpPost]
-        public JsonResult CartItemQuantityUpdate(int productId,int quantity)
+        public JsonResult CartItemQuantityUpdate(int productId, int quantity)
         {
             var sessionId = Session["sessionId"].ToString();
             var currentCart = dbContext.Carts.SingleOrDefault(q => q.SessionId == sessionId);
@@ -89,7 +90,7 @@ namespace LuxyboxIdentity.Controllers
             item.Quantity = quantity;
             dbContext.SaveChanges();
             RedirectToAction("cart");
-            return Json(new { result= true });
+            return Json(new { result = true });
         }
         [HttpPost]
 
@@ -97,19 +98,19 @@ namespace LuxyboxIdentity.Controllers
         {
             var sessionId = Session["sessionId"].ToString();
             var currentCart = dbContext.Carts.SingleOrDefault(q => q.SessionId == sessionId);
-           
+
             if (HttpContext.User.Identity.IsAuthenticated)
             {
                 currentCart.MemberId = User.Identity.GetUserId();
             }
 
             CartItem item = currentCart.CartItems.SingleOrDefault(q => q.ProductId == productId);
-           dbContext.CartItems.Remove(item);
+            dbContext.CartItems.Remove(item);
             if (item == null)
             {
                 return Json(new { result = false });
             }
-            
+
             dbContext.SaveChanges();
             return Json(new { result = true });
 
@@ -131,7 +132,7 @@ namespace LuxyboxIdentity.Controllers
                 currentCart.MemberId = User.Identity.GetUserId();
             }
             var item = currentCart.CartItems.SingleOrDefault(q => q.ProductId == id);
-            if (item==null)
+            if (item == null)
             {
                 item = new CartItem { CartId = currentCart.Id, CreateDate = DateTime.Now, ProductId = id, Quantity = 1 };
                 currentCart.CartItems.Add(item);
@@ -139,16 +140,16 @@ namespace LuxyboxIdentity.Controllers
             else {
                 item.Quantity++;
             }
-            
+
             dbContext.SaveChanges();
             return RedirectToAction("Cart");
         }
         public ActionResult Cart()
         {
-           
+
             string sessionId = Session["sessionId"].ToString();
-            
-            
+
+
             Cart cart = dbContext.Carts.SingleOrDefault(q => q.SessionId == sessionId);
             if (cart == null)
             {
@@ -198,25 +199,44 @@ namespace LuxyboxIdentity.Controllers
 
             return View();
         }
+
         public ActionResult Contact()
         {
-            dbContext.SaveChanges();
+            
+
             return View();
         }
-
 
         [HttpPost]
 
-        public ActionResult Contact([Bind(Include = "Id,Name,Mail,Subjact,Message")] Contact contact)
-        {
-            if (ModelState.IsValid)
+        public JsonResult Contact(string name, string message, string subject, string mail)
+           {
+        
+            dbContext.Contacts.Add(new Data.Contact { Mail = mail, Name = name, Message = message, Subject=subject });
+            try
             {
-                dbContext.Contacts.Add(contact);
+                
                 dbContext.SaveChanges();
-                return RedirectToAction("contact");
+                
             }
-            return View();
+            catch(Exception ex)
+            {
+
+            }
+            return Json(new { result = true });
+            
+
         }
+        //[HttpPost]
+
+        //public JsonResult Contact(Data.Contact contact)
+        //{
+        //    dbContext.Contacts.Add(contact);
+        //    dbContext.SaveChanges();
+        //    return Json(new { result = true });
+
+
+        //}
 
         public ActionResult CheckOrder()
         {

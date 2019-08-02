@@ -53,7 +53,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Mail" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Subjact" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Message" Type="varchar" MaxLength="2000" Nullable="false" />
         </EntityType>
         <EntityType Name="Order">
@@ -402,7 +402,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Mail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Subjact" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Message" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
@@ -492,7 +492,7 @@
             <EntityTypeMapping TypeName="STAJER2019Model.Contact">
               <MappingFragment StoreEntitySet="Contact">
                 <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="Subjact" ColumnName="Subjact" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
                 <ScalarProperty Name="Mail" ColumnName="Mail" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

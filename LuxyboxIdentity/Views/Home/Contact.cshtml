@@ -6,12 +6,16 @@
 }
 <h2></h2>
 <h3></h3>
-<div>Adınız:</div>
-<input type="text" name="Yourname" />
-<div>E-mail Adresiniz:</div>
-<input type="email" name="mail" />
-<div>Mesaj Konusu:</div>
-<input type="text" name="subject" />
-<div>Mesajınız:</div>
-<textarea name="Message" cols="40" rows="5"></textarea>
-<div><button>GÖNDER</button></div>
+<div class="control">
+    <div>Adınız:</div>
+    <input id="name" type="text" name="name" required />
+    <div>E-mail Adresiniz: </div>
+    <input id="email" type="email" name="email"/>
+    <div>Mesaj Konusu:</div>
+    <input id="subject" type="text" name="subject" />
+    <div>Mesajınız:</div>
+<textarea id="message" name="message" cols="40" rows="5"></textarea>
+    <div>
+        <button id="btnsend">GÖNDER</button>
+    </div>
+</div>

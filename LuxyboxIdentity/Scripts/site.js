@@ -108,6 +108,33 @@ function refreshCartIconCount() {
     $(".cart-icon .cart-icon-count").text($productItems.length);
 }
 
+//function requiredcontact() {
+//    var required = document.querySelectorAll("input-required");
+//    required.forEach(function (element) {
+//        if (element.value.trim() == "") {
+//            element.style.backgroundColor = "red";
+//        } else {
+//            element.style.backgroundColor = "blue";
+//        }
+//    });
+//}
+$("#btnsend").on("click", function () {
+    var name = $("#name").val()
+    console.log(name);
+});
+$("#btnsend").on("click", function () {
+    var email = $("#email").val()
+    console.log(email);
+});
+$("#btnsend").on("click", function () {
+    var subject = $("#subject").val()
+    console.log(subject);
+});
+$("#btnsend").on("click", function () {
+    var message = $("#message").val()
+    console.log(message);
+});
+
 
 Number.prototype.round = function (p) {
     p = p || 10;

@@ -263,3 +263,12 @@ display:block;
 .input-required{
     border-color:red;
 }
+
+.error-message {
+    color: red;
+    font-size: 18px;
+}
+
+.not-empty {
+    border-color: red;
+}

@@ -4,8 +4,7 @@
 @{
     ViewBag.Title = "Contact";
 }
-<h2></h2>
-<h3></h3>
+
 <div class="control">
     <div>Adınız:</div>
     <input id="name" type="text" name="name" required />
@@ -14,7 +13,10 @@
     <div>Mesaj Konusu:</div>
     <input id="subject" type="text" name="subject" />
     <div>Mesajınız:</div>
-<textarea id="message" name="message" cols="40" rows="5"></textarea>
+        <textarea id="message" name="message" cols="40" rows="5"></textarea>
+    <div>
+        <span class="error-message"></span>
+    </div>
     <div>
         <button id="btnsend">GÖNDER</button>
     </div>

@@ -118,22 +118,61 @@ function refreshCartIconCount() {
 //        }
 //    });
 //}
+
+
+
 $("#btnsend").on("click", function () {
-    var name = $("#name").val()
-    console.log(name);
-});
-$("#btnsend").on("click", function () {
-    var email = $("#email").val()
-    console.log(email);
-});
-$("#btnsend").on("click", function () {
-    var subject = $("#subject").val()
-    console.log(subject);
-});
-$("#btnsend").on("click", function () {
-    var message = $("#message").val()
-    console.log(message);
-});
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var subject = $("#subject").val();
+    var message = $("#message").val();
+
+    if (name == "") {
+        $("#name").addClass("not-empty");
+        $(".error-message").text("Lütfen isim giriniz.");
+        return;
+    } 
+
+    if (email == "") {
+        $("#email").addClass("not-empty");
+        $(".error-message").text("Lütfen email giriniz.");
+        return;
+    } 
+
+    if (subject == "") {
+        $("#subject").addClass("not-empty");
+        $(".error-message").text("Lütfen konu giriniz.");
+        return;
+    } 
+
+    if (message == "") {
+        $("#message").addClass("not-empty");
+        $(".error-message").text("Lütfen mesaj giriniz.");
+        return;
+    } 
+
+
+
+    $.ajax({
+        method: "POST",
+        url: "/Home/Contact",
+        data: {
+            name: name,
+            mail: email,
+            subject: subject,
+            message: message
+        }
+    })
+    .done(function (r) {
+        if (r.result) {
+            $(".control input, .control textarea").val("");
+            $(".control input, .control textarea").removeClass("not-empty");
+            $(".error-message").text("");
+        }
+    });
+ })
+
+
 
 
 Number.prototype.round = function (p) {
